@@ -9,11 +9,22 @@ import {
   MenuList,
 } from "@material-ui/core";
 import { useSelectStyle } from "./FormikSelect.style";
+import { FormikSelectropsType } from "./FormikSelect.types";
 
-export const FormikSelect = (props: any) => {
+export const FormikSelect = (props: FormikSelectropsType) => {
   const classes = useSelectStyle();
+  const { root, popper } = classes;
+  const {
+    buttonStyles,
+    label,
+    name,
+    options,
+    paperStyles,
+    setFieldTouched,
+    setFieldValue,
+  } = props;
   const [open, setOpen] = useState(false);
-  const [buttonLabel, setButtonLabel] = useState(props.label);
+  const [buttonLabel, setButtonLabel] = useState(label);
   const anchorRef = useRef<HTMLButtonElement>(null);
   const prevOpen = useRef(open);
 
@@ -35,13 +46,13 @@ export const FormikSelect = (props: any) => {
   const handleClickItem = (option: { label: string; value: string }) => {
     setButtonLabel(option.label);
     setOpen(false);
-    props.setFieldValue(props.name, option.value);
-    props.setFieldTouched(props.name, true, false);
+    setFieldValue(name, option.value);
+    setFieldTouched(name, true, false);
   };
 
   const handleButtonLabel = () => {
     if (!buttonLabel || buttonLabel === "None") {
-      return props.label;
+      return label;
     }
     return buttonLabel;
   };
@@ -56,14 +67,14 @@ export const FormikSelect = (props: any) => {
   }, [open]);
 
   return (
-    <div className={classes.root}>
+    <div className={root}>
       <div>
         <Button
           ref={anchorRef}
           aria-controls={open ? "menu-list-grow" : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
-          className={props.buttonStyles}
+          className={buttonStyles}
         >
           {handleButtonLabel()}
         </Button>
@@ -73,7 +84,7 @@ export const FormikSelect = (props: any) => {
           role={undefined}
           transition
           disablePortal
-          className={classes.popper}
+          className={popper}
         >
           {({ TransitionProps, placement }) => (
             <Grow
@@ -83,11 +94,11 @@ export const FormikSelect = (props: any) => {
                   placement === "bottom" ? "center top" : "center bottom",
               }}
             >
-              <Paper className={props.paperStyles}>
+              <Paper className={paperStyles}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow">
-                    {props.options &&
-                      props.options.map(
+                    {options &&
+                      options.map(
                         (
                           option: { label: string; value: string },
                           index: number
