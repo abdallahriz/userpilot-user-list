@@ -1,3 +1,5 @@
+# User List App
+
 ![](https://img.shields.io/badge/React-61DAFB)
 ![](https://img.shields.io/badge/Typescript-00273F)
 ![](https://img.shields.io/badge/MaterialUI-1976d2)
@@ -5,8 +7,6 @@
 ![](https://img.shields.io/badge/npm-FE7D37)
 ![](https://img.shields.io/badge/yarn-2188B6)
 ![](https://img.shields.io/badge/axios-FFFFFF)
-
-# User List App
 
 A simple application that provide the abilities of showing a list of users and filtering them based on gender and nationality.
 
