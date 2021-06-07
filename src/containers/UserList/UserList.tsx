@@ -40,7 +40,8 @@ const UserList = () => {
   const { userId } = useParams<{ userId: string }>();
   const [usersList, setUsersList] = useState<UserResponse[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState({});
+  const [selectedUser, setSelectedUser] =
+    useState<UserResponse | undefined>(undefined);
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(8);
@@ -143,7 +144,7 @@ const UserList = () => {
                   values,
                   setFieldValue,
                   setFieldTouched,
-                  submitForm,
+                  errors,
                 }): React.ReactNode => {
                   return (
                     <Form className={form}>
@@ -156,19 +157,19 @@ const UserList = () => {
                         options={options}
                         setFieldValue={setFieldValue}
                         setFieldTouched={setFieldTouched}
+                        error={errors["gender"]}
                       />
                       <FormikTextField
                         FormControlStyle={formControlStyle}
-                        id={"nationality"}
                         name={"nationality"}
                         value={values.nationality}
-                        fullWidth
                         autoComplete={"nationality"}
                         margin={"normal"}
                         setFieldValue={setFieldValue}
                         setFieldTouched={setFieldTouched}
                         className={natInputFieldStyle}
                         placeholder={"Nationality"}
+                        error={errors["nationality"]}
                       />
                     </Form>
                   );

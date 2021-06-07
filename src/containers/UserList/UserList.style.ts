@@ -50,7 +50,7 @@ export const useUserListStyle = makeStyles((theme) => ({
     borderRadius: "8px",
     margin: "0px 33px 33px 30px",
     [theme.breakpoints.down("xs")]: {
-      margin: "0px 0px 0px 30px",
+      margin: "0px 0px 30px 0",
     },
   },
   tableHeader: {
