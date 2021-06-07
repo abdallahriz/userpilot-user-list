@@ -27,18 +27,18 @@ export const DrawerComponent = (props: DrawerProps) => {
     >
       <div className={blueDiv}>
         <img
-          src={data.picture && data.picture.large}
+          src={data && data.picture && data.picture.large}
           className={avatar}
           alt="avatar"
         />
       </div>
       <div className={userInfoWrapper}>
-        {data.name && (
+        {data && data.name && (
           <Typography className={userName}>
             {data.name.first} {data.name.last}
           </Typography>
         )}
-        {data.location && (
+        {data && data.location && (
           <Typography className={userLocation}>
             {data.location.street.number} {data.location.street.name}.{" "}
             {data.location.city} {data.location.state}
