@@ -26,6 +26,7 @@ export const useUserTableStyle = makeStyles((theme) => ({
     height: "92px",
   },
   tableRow: {
+    cursor: "pointer",
     "&:hover": {
       background: "rgb(55, 81, 255, 0.04)",
     },
